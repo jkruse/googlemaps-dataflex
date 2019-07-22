@@ -1,2 +1,33 @@
 # googlemaps-dataflex
-Google Maps Custom Component for DataFlex
+
+A DataFlex custom component wrapper for Google Maps.
+
+## Getting started
+
+Install [DataFlex](https://www.dataaccess.com/download/dfstudio/). This workspace is setup for version 19.1, but should be easy to migrate.
+
+Install [Node.js](https://nodejs.org/). Version 10 or later will do nicely.
+
+Install dependencies - from your googlemaps-dataflex folder run:
+
+    > npm install
+
+Build the component client-side files (will be placed in `AppHtml/Custom/`):
+
+    > npm run build
+
+## To run the demo application
+
+Start the DataFlex Studio and open the GoogleMaps workspace inside your googlemaps-dataflex folder. The studio will copy themes and the JavaScript engine into the `AppHtml` folder.
+
+Register the web application from the studio menu "Tools > Register WebApp...".
+
+Hit F5 to run the application.
+
+## To use to component in another application
+
+Copy client-side files into your application:
+
+    > xcopy AppHtml\Custom <path to your application>\AppHtml\Custom /e /i
+
+Either copy `AppSrc/cWebGoogleMaps.pkg` to your application AppSrc folder, or add the GoogleMaps workspace as a library ("Tools > Maintain Libraries... > Add Library...").
