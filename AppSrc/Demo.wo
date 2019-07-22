@@ -1,0 +1,143 @@
+Use cWebView.pkg
+Use cWebPanel.pkg
+Use cWebForm.pkg 
+Use cWebGroup.pkg
+Use cWebMenuGroup.pkg 
+Use cWebMenuItem.pkg
+Use cWebGoogleMaps.pkg
+Use cWebButton.pkg
+Use cWebList.pkg
+Use cWebColumn.pkg
+Use cCryptographer.pkg
+
+Object oDemo is a cWebView
+    Set peWebViewStyle to wvsDrillDown
+    Set pbShowCaption to False
+    Set Verify_Save_msg to 0 // don't confirm saves
+    
+    Set psCaption to "Google Maps Demo"
+
+    Set piMaxWidth to 1024
+    Set piColumnCount to 12
+
+    Object oWebMainPanel is a cWebPanel
+        Set piColumnCount to 12
+        WebSetResponsive piColumnCount rmMobile to 6
+
+        Object oGoogleMaps is a cWebGoogleMaps
+            Set pnInitialCenterLat to -34.397
+            Set pnInitialCenterLng to 150.644
+            Set piZoom to 10
+            Set pbServerOnClick to True
+            Set pbServerOnRightClick to True
+
+            Procedure OnClick Number nLat Number nLng Integer iClientX Integer iClientY
+                Send AddEvent of oEventList (SFormat("OnClick(%1, %2, %3, %4)", nLat, nLng, iClientX, iClientY))
+                Send PanTo nLat nLng
+            End_Procedure
+
+            Procedure OnRightClick Number nLat Number nLng Integer iClientX Integer iClientY
+                Send AddEvent of oEventList (SFormat("OnRightClick(%1, %2, %3, %4)", nLat, nLng, iClientX, iClientY))
+            End_Procedure
+        End_Object
+
+        Object oGroup1 is a cWebGroup
+            Set piColumnCount to 12
+            Set piColumnSpan to 6
+            Set psCaption to "Methods"
+
+            WebSetResponsive piColumnCount rmMobile to 1
+            
+            Object oWebButton1 is a cWebButton
+                Set piColumnSpan to 6
+                Set psCaption to "Pan to Sydney"
+            
+                Procedure OnClick
+                    Send PanTo of oGoogleMaps -33.9 151.2
+                End_Procedure
+            End_Object
+
+            Object oWebButton2 is a cWebButton
+                Set piColumnSpan to 6
+                Set piColumnIndex to 6
+                Set psCaption to "Set Center to Copenhagen"
+            
+                Procedure OnClick
+                    Send SetCenter of oGoogleMaps 55.67 12.57
+                End_Procedure
+            End_Object
+
+            Object oWebButton3 is a cWebButton
+                Set piColumnSpan to 4
+                Set psCaption to "Zoom In"
+            
+                Procedure OnClick
+                    Integer i
+                    WebGet piZoom of oGoogleMaps to i
+                    WebSet piZoom of oGoogleMaps to (i + 1)
+                End_Procedure
+            End_Object
+
+            Object oWebButton4 is a cWebButton
+                Set piColumnSpan to 4
+                Set piColumnIndex to 4
+                Set psCaption to "Zoom Out"
+            
+                Procedure OnClick
+                    Integer i
+                    WebGet piZoom of oGoogleMaps to i
+                    WebSet piZoom of oGoogleMaps to (i - 1)
+                End_Procedure
+            End_Object
+
+            Object oWebButton6 is a cWebButton
+                Set piColumnSpan to 4
+                Set piColumnIndex to 8
+                Set psCaption to "Zoom to GPS"
+            
+                Procedure OnClick
+                    Send Geolocate of oGoogleMaps
+                End_Procedure
+            End_Object
+
+            Object oWebButton5 is a cWebButton
+                Set piColumnSpan to 0
+                Set psCaption to "Add Marker at Uluru"
+            
+                Procedure OnClick
+                    Send AddMarker of oGoogleMaps -25.344 131.036 "Uluru" '<p><b>Uluru</b>, also known as <b>Ayers Rock</b> and officially <a href="https://en.wiktionary.org/wiki/gazette#Verb" class="extiw" title="wikt:gazette">gazetted</a> as <b>Uluru&nbsp;/ Ayers Rock</b>, is a large sandstone rock formation in the southern part of the Northern Territory in central Australia. It lies 335&nbsp;km (208&nbsp;mi) south west of the nearest large town, Alice Springs.</p>'
+                End_Procedure
+            End_Object
+        End_Object
+
+        Object oGroup2 is a cWebGroup
+            Set piColumnCount to 12
+            Set piColumnSpan to 6
+            Set piColumnIndex to 6
+            Set psCaption to "Events"
+
+            WebSetResponsive piColumnCount rmMobile to 1
+            
+            Object oEventList is a cWebList
+                Set pbDataAware to False
+                Set pbShowHeader to False
+
+                Object oWebColumn1 is a cWebColumn
+                    Set piWidth to 50
+                End_Object
+                
+                Object oRandomGen is a cCryptographer
+                End_Object
+
+                Procedure AddEvent String sText
+                    tWebRow tRow
+                    Move (GenerateRandomString(oRandomGen, 10)) to tRow.sRowId
+                    Move sText to tRow.aCells[0].sValue
+                    Send DataSetAppendRow tRow
+                End_Procedure
+            End_Object
+        End_Object
+        
+    End_Object 
+    
+End_Object

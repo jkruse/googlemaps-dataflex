@@ -1,0 +1,72 @@
+Use cWebBaseControl.pkg
+
+Class cWebGoogleMaps is a cWebBaseControl
+    
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set psJSClass to "WebGoogleMaps"
+        
+        Set pbShowLabel to False
+        Set piColumnSpan to 0
+        Set pbFillHeight to True
+        
+        { WebProperty=Client }
+        Property Number pnInitialCenterLat
+        { WebProperty=Client }
+        Property Number pnInitialCenterLng
+        { WebProperty=Client }
+        Property Integer piZoom
+        
+        { WebProperty=Client }
+        Property Boolean pbServerOnClick False
+        { WebProperty=Client }
+        Property String psClientOnClick ""
+        { WebProperty=Client }
+        Property Boolean pbServerOnRightClick False
+        { WebProperty=Client }
+        Property String psClientOnRightClick ""
+    End_Procedure
+
+    Procedure End_Construct_Object
+        Forward Send End_Construct_Object
+
+        WebPublishProcedure OnClick
+        WebPublishProcedure OnRightClick
+    End_Procedure
+    
+    Procedure PanTo Number nLat Number nLng
+        String[] aParams
+        Move nLat to aParams[0]
+        Move nLng to aParams[1]
+        Send ClientAction "panTo" aParams
+    End_Procedure
+    
+    Procedure SetCenter Number nLat Number nLng
+        String[] aParams
+        Move nLat to aParams[0]
+        Move nLng to aParams[1]
+        Send ClientAction "setCenter" aParams
+    End_Procedure
+    
+    Procedure AddMarker Number nLat Number nLng String sTitle String sInfoText
+        String[] aParams
+        Move nLat to aParams[0]
+        Move nLng to aParams[1]
+        Move sTitle to aParams[2]
+        Move sInfoText to aParams[3]
+        Send ClientAction "addMarker" aParams
+    End_Procedure
+    
+    Procedure Geolocate
+        Send ClientAction "geolocate"
+    End_Procedure
+    
+    { MethodType=Event }
+    Procedure OnClick Number nLat Number nLng Integer iClientX Integer iClientY
+    End_Procedure
+
+    { MethodType=Event }
+    Procedure OnRightClick Number nLat Number nLng Integer iClientX Integer iClientY
+    End_Procedure
+
+End_Class
