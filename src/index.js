@@ -15,6 +15,9 @@ class WebGoogleMaps extends df.WebBaseControl {
         decimalSeparator = this.getWebApp().psDecimalSeparator;
         thousandsSeparator = this.getWebApp().psThousandsSeparator;
 
+        // Server-side defined by cWebBaseControl, but client-side not so much...
+        this.prop(df.tInt, "piMinHeight", 0);
+
         this.prop(df.tNumber, 'pnInitialCenterLat'); // will be string, DF bug
         this.prop(df.tNumber, 'pnInitialCenterLng'); // will be string, DF bug
         this.prop(df.tInt, 'piZoom');

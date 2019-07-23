@@ -30,6 +30,7 @@ Object oDemo is a cWebView
             Set piZoom to 10
             Set pbServerOnClick to True
             Set pbServerOnRightClick to True
+            Set piMinHeight to 300
 
             Procedure OnClick Number nLat Number nLng Integer iClientX Integer iClientY
                 Send AddEvent of oEventList (SFormat("OnClick(%1, %2, %3, %4)", nLat, nLng, iClientX, iClientY))

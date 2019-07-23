@@ -4,7 +4,7 @@ A DataFlex custom component wrapper for Google Maps.
 
 ## Demo
 
-[Available here](https://www.kruse-net.dk/googlemaps/)
+[Available here](https://www.kruse-net.dk/googlemaps/).
 
 ## Getting started
 
