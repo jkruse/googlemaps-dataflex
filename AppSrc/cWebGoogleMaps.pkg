@@ -61,6 +61,14 @@ Class cWebGoogleMaps is a cWebBaseControl
         Send ClientAction "geolocate"
     End_Procedure
     
+    // Needs Directions API enabled
+    Procedure ShowRoute String sOrigin String sDestination
+        String[] aParams
+        Move sOrigin to aParams[0]
+        Move sDestination to aParams[1]
+        Send ClientAction "showRoute" aParams
+    End_Procedure
+    
     { MethodType=Event }
     Procedure OnClick Number nLat Number nLng Integer iClientX Integer iClientY
     End_Procedure

@@ -109,6 +109,15 @@ Object oDemo is a cWebView
                     Send AddMarker of oGoogleMaps -25.344 131.036 "Uluru" '<p><b>Uluru</b>, also known as <b>Ayers Rock</b> and officially <a href="https://en.wiktionary.org/wiki/gazette#Verb" class="extiw" title="wikt:gazette">gazetted</a> as <b>Uluru&nbsp;/ Ayers Rock</b>, is a large sandstone rock formation in the southern part of the Northern Territory in central Australia. It lies 335&nbsp;km (208&nbsp;mi) south west of the nearest large town, Alice Springs.</p>'
                 End_Procedure
             End_Object
+
+            Object oWebButton7 is a cWebButton
+                Set piColumnSpan to 0
+                Set psCaption to "Show route from Darwin to Coober Pedy"
+            
+                Procedure OnClick
+                    Send ShowRoute of oGoogleMaps "Darwin, NT" "Coober Pedy, SA"
+                End_Procedure
+            End_Object
         End_Object
 
         Object oGroup2 is a cWebGroup

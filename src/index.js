@@ -52,6 +52,10 @@ class WebGoogleMaps extends df.WebBaseControl {
         });
         this.map.addListener('click', this.onClick.bind(this));
         this.map.addListener('rightclick', this.onRightClick.bind(this));
+
+        this.directionsService = new google.maps.DirectionsService();
+        this.directionsDisplay = new google.maps.DirectionsRenderer();
+        this.directionsDisplay.setMap(this.map);
     }
 
     panTo(lat, lng) {
@@ -92,6 +96,14 @@ class WebGoogleMaps extends df.WebBaseControl {
                 this.map.setZoom(17);
             });
         }
+    }
+
+    showRoute(origin, destination) {
+        this.directionsService.route({ origin, destination, travelMode: 'DRIVING' }, (result, status) => {
+            if (status === 'OK') {
+                this.directionsDisplay.setDirections(result);
+            }
+        });
     }
 
     // Setters
