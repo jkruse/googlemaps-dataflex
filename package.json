@@ -4,16 +4,19 @@
   "private": true,
   "author": "Jakob Kruse <kruse@kruse-net.dk>",
   "version": "0.0.1",
-  "repository": "",
+  "repository": "github:jkruse/googlemaps-dataflex",
   "scripts": {
     "watch": "webpack --watch --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "dist": "rimraf dist && copyfiles -f \"%ProgramFiles(x86)%/DataFlex 19.1/Lib/WebAppMaster/Data/[Ww]eb[Aa]pp[Ss]erver[Pp]rops.*\" Data && npm run build && 7z a dist/GoogleMapsDemo.zip * -r -x!.git -x!.vscode -x!CssThemes -x!DfEngine -x!*.dep -x!*.prn -x!IdeSrc/* -x!node_modules -x!*.dbg -x!*.exe -x!*.log && 7z a dist/GoogleMapsComponent.zip AppHtml/Custom/* AppSrc/cWebGoogleMaps.pkg LICENSE"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "copyfiles": "^2.1.1",
+    "rimraf": "^2.6.3",
     "source-map-loader": "^0.2.4",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6",
