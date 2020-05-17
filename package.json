@@ -3,7 +3,7 @@
   "description": "Kruse-Net Google Maps Custom Component",
   "private": true,
   "author": "Jakob Kruse <kruse@kruse-net.dk>",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "repository": "github:jkruse/googlemaps-dataflex",
   "scripts": {
     "watch": "webpack --watch --config webpack.dev.js",
