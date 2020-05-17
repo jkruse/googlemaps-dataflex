@@ -115,21 +115,22 @@ class WebGoogleMaps extends df.WebBaseControl {
     // Events
 
     onClick(event) {
-        // console.log(event);
+        const mouseEvent = Object.values(event).find(p => p instanceof window.MouseEvent);
         this.fire('OnClick', [
             numToString(event.latLng.lat()),
             numToString(event.latLng.lng()),
-            event.wa.clientX,
-            event.wa.clientY
+            mouseEvent.clientX,
+            mouseEvent.clientY
         ]);
     }
 
     onRightClick(event) {
+        const mouseEvent = Object.values(event).find(p => p instanceof window.MouseEvent);
         this.fire('OnRightClick', [
             numToString(event.latLng.lat()),
             numToString(event.latLng.lng()),
-            event.wa.clientX,
-            event.wa.clientY
+            mouseEvent.clientX,
+            mouseEvent.clientY
         ]);
     }
 }
