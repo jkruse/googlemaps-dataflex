@@ -69,6 +69,11 @@ Class cWebGoogleMaps is a cWebBaseControl
         Send ClientAction "showRoute" aParams
     End_Procedure
     
+    Procedure ResetMap
+        WebSet piZoom to (piZoom(Self))
+        Send ClientAction "initializeMap"
+    End_Procedure
+    
     { MethodType=Event }
     Procedure OnClick Number nLat Number nLng Integer iClientX Integer iClientY
     End_Procedure

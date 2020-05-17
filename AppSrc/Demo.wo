@@ -49,7 +49,7 @@ Object oDemo is a cWebView
 
             WebSetResponsive piColumnCount rmMobile to 1
             
-            Object oWebButton1 is a cWebButton
+            Object oBtnPan is a cWebButton
                 Set piColumnSpan to 6
                 Set psCaption to "Pan to Sydney"
             
@@ -58,7 +58,7 @@ Object oDemo is a cWebView
                 End_Procedure
             End_Object
 
-            Object oWebButton2 is a cWebButton
+            Object oBtnCenter is a cWebButton
                 Set piColumnSpan to 6
                 Set piColumnIndex to 6
                 Set psCaption to "Set Center to Copenhagen"
@@ -68,7 +68,7 @@ Object oDemo is a cWebView
                 End_Procedure
             End_Object
 
-            Object oWebButton3 is a cWebButton
+            Object oBtnZoomIn is a cWebButton
                 Set piColumnSpan to 4
                 Set psCaption to "Zoom In"
             
@@ -79,7 +79,7 @@ Object oDemo is a cWebView
                 End_Procedure
             End_Object
 
-            Object oWebButton4 is a cWebButton
+            Object oBtnZoomOut is a cWebButton
                 Set piColumnSpan to 4
                 Set piColumnIndex to 4
                 Set psCaption to "Zoom Out"
@@ -91,7 +91,7 @@ Object oDemo is a cWebView
                 End_Procedure
             End_Object
 
-            Object oWebButton6 is a cWebButton
+            Object oBtnGeolocate is a cWebButton
                 Set piColumnSpan to 4
                 Set piColumnIndex to 8
                 Set psCaption to "Zoom to GPS"
@@ -101,7 +101,7 @@ Object oDemo is a cWebView
                 End_Procedure
             End_Object
 
-            Object oWebButton5 is a cWebButton
+            Object oBtnAddMarker is a cWebButton
                 Set piColumnSpan to 0
                 Set psCaption to "Add Marker at Uluru"
             
@@ -110,12 +110,21 @@ Object oDemo is a cWebView
                 End_Procedure
             End_Object
 
-            Object oWebButton7 is a cWebButton
+            Object oBtnShowRoute is a cWebButton
                 Set piColumnSpan to 0
                 Set psCaption to "Show route from Darwin to Coober Pedy"
             
                 Procedure OnClick
                     Send ShowRoute of oGoogleMaps "Darwin, NT" "Coober Pedy, SA"
+                End_Procedure
+            End_Object
+
+            Object oBtnResetMap is a cWebButton
+                Set piColumnSpan to 0
+                Set psCaption to "Reset map"
+            
+                Procedure OnClick
+                    Send ResetMap of oGoogleMaps
                 End_Procedure
             End_Object
         End_Object
