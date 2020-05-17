@@ -9,6 +9,7 @@ Use cWebButton.pkg
 Use cWebList.pkg
 Use cWebColumn.pkg
 Use cCryptographer.pkg
+Use cWebCombo.pkg
 
 Object oDemo is a cWebView
     Set peWebViewStyle to wvsDrillDown
@@ -101,12 +102,35 @@ Object oDemo is a cWebView
                 End_Procedure
             End_Object
 
+            Object oMarkerIcon is a cWebCombo
+                Set piColumnSpan to 6
+                Set pbShowLabel to False
+                Set pbAddEmptyItem to False
+
+                Procedure OnFill
+                    Forward Send OnFill
+                    Send AddComboItem "" "Google Default"
+                    Send AddComboItem "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png" "Custom Red"
+                    Send AddComboItem "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_black.png" "Custom Black"
+                    Send AddComboItem "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_blue.png" "Custom Blue"
+                    Send AddComboItem "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_green.png" "Custom Green"
+                    Send AddComboItem "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_grey.png" "Custom Grey"
+                    Send AddComboItem "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange.png" "Custom Orange"
+                    Send AddComboItem "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_purple.png" "Custom Purple"
+                    Send AddComboItem "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_white.png" "Custom White"
+                    Send AddComboItem "https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_yellow.png" "Custom Yellow"
+                End_Procedure
+            End_Object
+
             Object oBtnAddMarker is a cWebButton
-                Set piColumnSpan to 0
+                Set piColumnSpan to 6
                 Set psCaption to "Add Marker at Uluru"
+                Set piColumnIndex to 6
             
                 Procedure OnClick
-                    Send AddMarker of oGoogleMaps -25.344 131.036 "Uluru" '<p><b>Uluru</b>, also known as <b>Ayers Rock</b> and officially <a href="https://en.wiktionary.org/wiki/gazette#Verb" class="extiw" title="wikt:gazette">gazetted</a> as <b>Uluru&nbsp;/ Ayers Rock</b>, is a large sandstone rock formation in the southern part of the Northern Territory in central Australia. It lies 335&nbsp;km (208&nbsp;mi) south west of the nearest large town, Alice Springs.</p>'
+                    String sIcon
+                    WebGet psValue of oMarkerIcon to sIcon
+                    Send AddMarker of oGoogleMaps -25.344 131.036 "Uluru" '<p><b>Uluru</b>, also known as <b>Ayers Rock</b> and officially <a href="https://en.wiktionary.org/wiki/gazette#Verb" class="extiw" title="wikt:gazette">gazetted</a> as <b>Uluru&nbsp;/ Ayers Rock</b>, is a large sandstone rock formation in the southern part of the Northern Territory in central Australia. It lies 335&nbsp;km (208&nbsp;mi) south west of the nearest large town, Alice Springs.</p>' sIcon
                 End_Procedure
             End_Object
 

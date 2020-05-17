@@ -66,13 +66,14 @@ class WebGoogleMaps extends df.WebBaseControl {
         this.map.setCenter({ lat: stringToNum(lat), lng: stringToNum(lng) });
     }
 
-    addMarker(lat, lng, title, infoText) {
+    addMarker(lat, lng, title, infoText, iconUrl) {
         const marker = new google.maps.Marker({
             position: {
                 lat: stringToNum(lat),
                 lng: stringToNum(lng)
             },
             title,
+            icon: iconUrl,
             map: this.map
         });
 

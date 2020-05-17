@@ -48,12 +48,15 @@ Class cWebGoogleMaps is a cWebBaseControl
         Send ClientAction "setCenter" aParams
     End_Procedure
     
-    Procedure AddMarker Number nLat Number nLng String sTitle String sInfoText
+    Procedure AddMarker Number nLat Number nLng String sTitle String sInfoText String sIcon
         String[] aParams
         Move nLat to aParams[0]
         Move nLng to aParams[1]
         Move sTitle to aParams[2]
         Move sInfoText to aParams[3]
+        If (num_arguments > 4) Begin
+            Move sIcon to aParams[4]
+        End
         Send ClientAction "addMarker" aParams
     End_Procedure
     
