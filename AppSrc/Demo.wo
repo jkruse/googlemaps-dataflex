@@ -143,6 +143,17 @@ Object oDemo is a cWebView
                 End_Procedure
             End_Object
 
+            Object oBtnShowRouteVia is a cWebButton
+                Set piColumnSpan to 0
+                Set psCaption to "Show route from Darwin to Coober Pedy via Mount Isa"
+            
+                Procedure OnClick
+                    String[] waypoints
+                    Move "Mount Isa, QLD" to waypoints[0]
+                    Send ShowRoute of oGoogleMaps "Darwin, NT" "Coober Pedy, SA" waypoints
+                End_Procedure
+            End_Object
+
             Object oBtnResetMap is a cWebButton
                 Set piColumnSpan to 0
                 Set psCaption to "Reset map"

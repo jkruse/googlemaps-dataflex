@@ -1,5 +1,9 @@
 let decimalSeparator, thousandsSeparator;
 
+const showRouteActionDataFormat = {
+    waypoints: [ df.tString ]
+};
+
 function stringToNum(string) {
     return df.sys.data.stringToNum(string, decimalSeparator, thousandsSeparator);
 }
@@ -100,7 +104,10 @@ class WebGoogleMaps extends df.WebBaseControl {
     }
 
     showRoute(origin, destination) {
-        this.directionsService.route({ origin, destination, travelMode: 'DRIVING' }, (result, status) => {
+        const waypoints = this._tActionData.c.length
+            ? df.sys.vt.deserialize(this._tActionData, showRouteActionDataFormat).waypoints.map(location => ({ location }))
+            : [];
+        this.directionsService.route({ origin, destination, waypoints, travelMode: 'DRIVING' }, (result, status) => {
             if (status === 'OK') {
                 this.directionsDisplay.setDirections(result);
             }

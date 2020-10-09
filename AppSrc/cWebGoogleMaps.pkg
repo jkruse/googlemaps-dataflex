@@ -1,5 +1,9 @@
 Use cWebBaseControl.pkg
 
+Struct tGoogleMapsShowRoute
+    String[] waypoints
+End_Struct
+
 Class cWebGoogleMaps is a cWebBaseControl
     
     Procedure Construct_Object
@@ -65,11 +69,18 @@ Class cWebGoogleMaps is a cWebBaseControl
     End_Procedure
     
     // Needs Directions API enabled
-    Procedure ShowRoute String sOrigin String sDestination
+    Procedure ShowRoute String sOrigin String sDestination String[] saWaypoints
         String[] aParams
+        tGoogleMapsShowRoute stExtraData
+        tWebValueTree stVT
+        
         Move sOrigin to aParams[0]
         Move sDestination to aParams[1]
-        Send ClientAction "showRoute" aParams
+        If (num_arguments > 2) Begin
+            Move saWaypoints to stExtraData.waypoints
+            ValueTreeSerializeParameter stExtraData to stVT
+        End
+        Send ClientAction "showRoute" aParams stVT
     End_Procedure
     
     Procedure ResetMap
