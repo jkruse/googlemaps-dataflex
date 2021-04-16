@@ -1,4 +1,4 @@
-Use cWebView.pkg
+﻿Use cWebView.pkg
 Use cWebPanel.pkg
 Use cWebForm.pkg 
 Use cWebGroup.pkg
@@ -8,7 +8,7 @@ Use cWebGoogleMaps.pkg
 Use cWebButton.pkg
 Use cWebList.pkg
 Use cWebColumn.pkg
-Use cCryptographer.pkg
+Use cCryptographerEx.pkg
 Use cWebCombo.pkg
 
 Object oDemo is a cWebView
@@ -180,7 +180,7 @@ Object oDemo is a cWebView
                     Set piWidth to 50
                 End_Object
                 
-                Object oRandomGen is a cCryptographer
+                Object oRandomGen is a cCryptographerEx
                 End_Object
 
                 Procedure AddEvent String sText

@@ -5,7 +5,10 @@ const showRouteActionDataFormat = {
 };
 
 function stringToNum(string) {
-    return df.sys.data.stringToNum(string, decimalSeparator, thousandsSeparator);
+    if (typeof string === 'string') {
+        return df.sys.data.stringToNum(string, decimalSeparator, thousandsSeparator);
+    }
+    return string;
 }
 
 function numToString(num) {
@@ -46,8 +49,8 @@ class WebGoogleMaps extends df.WebBaseControl {
     initializeMap() {
         this.map = new google.maps.Map(this._eControl, {
             center: {
-                lat: stringToNum(this.pnInitialCenterLat),
-                lng: stringToNum(this.pnInitialCenterLng)
+                lat: this.pnInitialCenterLat,
+                lng: this.pnInitialCenterLng
             },
             zoom: this.piZoom
         });

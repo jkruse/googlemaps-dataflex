@@ -3,12 +3,12 @@
   "description": "Kruse-Net Google Maps Custom Component",
   "private": true,
   "author": "Jakob Kruse <kruse@kruse-net.dk>",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "repository": "github:jkruse/googlemaps-dataflex",
   "scripts": {
     "watch": "webpack --watch --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "dist": "rimraf dist && copyfiles -f \"%ProgramFiles(x86)%/DataFlex 19.1/Lib/WebAppMaster/Data/[Ww]eb[Aa]pp[Ss]erver[Pp]rops.*\" Data && npm run build && 7z a dist/GoogleMapsDemo.zip * -r -x!.git -x!.vscode -x!CssThemes -x!DfEngine -x!*.dep -x!*.prn -x!IdeSrc/* -x!node_modules -x!*.dbg -x!*.exe -x!*.log && 7z a dist/GoogleMapsComponent.zip AppHtml/Custom/* AppSrc/cWebGoogleMaps.pkg LICENSE"
+    "dist": "rimraf dist && copyfiles -f \"%ProgramFiles%/DataFlex 20.0/Lib/WebAppMaster/Data/[Ww]eb[Aa]pp[Ss]erver[Pp]rops.*\" Data && npm run build && 7z a dist/GoogleMapsDemo.zip * -r -x!.git -x!.vscode -x!CssThemes -x!DfEngine -x!*.dep -x!*.prn -x!IdeSrc/* -x!node_modules -x!*.dbg -x!*.exe -x!*.log && 7z a dist/GoogleMapsComponent.zip AppHtml/Custom/* AppSrc/cWebGoogleMaps.pkg LICENSE"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
