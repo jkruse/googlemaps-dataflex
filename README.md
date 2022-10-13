@@ -30,16 +30,16 @@ Clone or download ZIP file of the repository to your computer.
 
 Install [DataFlex](https://www.dataaccess.com/download/dfstudio/). This workspace is setup for version 20.0, but should be easy to migrate.
 
-Install [Node.js](https://nodejs.org/). Version 12 or later will do nicely.
+Install [Node.js](https://nodejs.org/). Version 16 or later will do nicely.
 
 Install dependencies - from the folder where you cloned or extracted the repository run:
 
-    > npm ci
+    npm ci
 
 Build the component client-side files (will be placed in `AppHtml/Custom/`):
 
-    > npm run build
+    npm run build
 
 The component consists of a [DataFlex class](AppSrc/cWebGoogleMaps.pkg) and an [EcmaScript class](src/index.js). If you change the EcmaScript class you need to rebuild the component client-side files. Or to automatically rebuild a non-minifed version whenever you save it, run:
 
-    > npm run watch
+    npm run watch
