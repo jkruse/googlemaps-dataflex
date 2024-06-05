@@ -28,9 +28,9 @@ If you downloaded just the custom component, unzip to your existing workspace, a
 
 Clone or download ZIP file of the repository to your computer.
 
-Install [DataFlex](https://www.dataaccess.com/download/dfstudio/). This workspace is setup for version 20.0, but should be easy to migrate.
+Install [DataFlex](https://www.dataaccess.com/download/dfstudio/). This workspace is setup for version 20.1, but should be easy to migrate.
 
-Install [Node.js](https://nodejs.org/). Version 16 or later will do nicely.
+Install [Node.js](https://nodejs.org/). Latest LTS version recommended. At least v18.12 required.
 
 Install dependencies - from the folder where you cloned or extracted the repository run:
 
